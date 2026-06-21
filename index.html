@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sticker Word Lab</title>
+    <meta
+      name="description"
+      content="Собери ник из реальных CS2-стикеров: порядок нанесения, scrape, цены Steam, лучшие замены и короткая ссылка на крафт."
+    />
+    <meta name="theme-color" content="#090a0c" />
+    <meta property="og:title" content="Sticker Word Lab" />
+    <meta
+      property="og:description"
+      content="Генератор CS2 sticker-craft под ник: стикеры, износ, цены Steam и share-link."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090a0c'/%3E%3Cpath d='M14 44 27 14h10l13 30h-9l-2-6H25l-2 6h-9Zm14-14h8l-4-10-4 10Z' fill='%23f06f2f'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#mainContent">К основному содержимому</a>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">CS2 крафт из стикеров</p>
+          <h1>Sticker Word Lab</h1>
+          <p class="topbar-subtitle">Собирает ник из реальных CS2-стикеров, показывает порядок нанесения, износ, цены Steam и лучшие замены.</p>
+        </div>
+        <div class="data-status" id="dataStatus">Загрузка базы стикеров...</div>
+      </header>
+
+      <aside class="journey-bar" id="journeyBar">
+        <div class="journey-summary">
+          <span id="journeyWord">AFETZ</span>
+          <strong id="journeyPrimary" role="status" aria-live="polite" aria-atomic="true">Готовлю крафт...</strong>
+          <small id="journeyMeta">ждём базу стикеров</small>
+        </div>
+        <div class="journey-actions" aria-label="Быстрые действия">
+          <button type="button" data-jump="#moneyPanel">Оценка</button>
+          <button type="button" data-action="share">Ссылка</button>
+          <button type="button" data-jump="#revenuePanel">Заказ</button>
+        </div>
+      </aside>
+
+      <main class="layout" id="mainContent">
+        <section class="control-surface" aria-label="Настройки крафта">
+          <form id="craftForm" class="composer-form">
+            <label for="wordInput">Ник или слово</label>
+            <div class="input-row">
+              <input
+                id="wordInput"
+                name="word"
+                value="afetz"
+                spellcheck="false"
+                autocomplete="off"
+                maxlength="16"
+              />
+              <button type="submit" title="Собрать варианты">Собрать</button>
+            </div>
+            <div class="example-chips" aria-label="Быстрые примеры">
+              <button type="button" data-example-word="afetz">afetz</button>
+              <button type="button" data-example-word="s1mple">s1mple</button>
+              <button type="button" data-example-word="gg">gg</button>
+              <button type="button" data-example-word="zxc">zxc</button>
+            </div>
+
+            <details class="advanced-settings" id="advancedSettings">
+              <summary>Настройки подбора</summary>
+              <div class="settings-grid">
+                <label>
+                  Стиль
+                  <select id="effectMode">
+                    <option value="paper">Обычные / Paper</option>
+                    <option value="balanced" selected>Баланс цены и вида</option>
+                    <option value="flashy">Можно Holo / Gold</option>
+                  </select>
+                </label>
+                <label>
+                  Бюджет
+                  <select id="budgetMode">
+                    <option value="budget">Дешевле</option>
+                    <option value="balanced" selected>Баланс</option>
+                    <option value="premium">Эффектнее</option>
+                  </select>
+                </label>
+                <label>
+                  Лимит
+                  <select id="maxStickers">
+                    <option value="4">4 стикера</option>
+                    <option value="5" selected>5 стикеров</option>
+                  </select>
+                </label>
+                <label>
+                  Фрагмент
+                  <select id="maxChunk">
+                    <option value="2">до 2 букв</option>
+                    <option value="3">до 3 букв</option>
+                    <option value="4">до 4 букв</option>
+                    <option value="5">до 5 букв</option>
+                    <option value="6" selected>до 6 букв</option>
+                  </select>
+                </label>
+                <label>
+                  Цена за стикер
+                  <select id="maxStickerPrice">
+                    <option value="0.5">до $0.50</option>
+                    <option value="1">до $1</option>
+                    <option value="3" selected>до $3</option>
+                    <option value="10">до $10</option>
+                    <option value="999">без лимита</option>
+                  </select>
+                </label>
+                <label>
+                  Бюджет крафта
+                  <select id="maxCraftPrice">
+                    <option value="1">до $1</option>
+                    <option value="3">до $3</option>
+                    <option value="5" selected>до $5</option>
+                    <option value="10">до $10</option>
+                    <option value="999">без лимита</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="toggle-row">
+                <label>
+                  <input id="preferAutographs" type="checkbox" checked />
+                  автографы для скрытых букв
+                </label>
+                <label>
+                  <input id="allowRotations" type="checkbox" checked />
+                  повороты для N/Z/Y
+                </label>
+                <label>
+                  <input id="requireSteamPrice" type="checkbox" checked />
+                  только с ценой Steam
+                </label>
+              </div>
+            </details>
+          </form>
+
+          <div class="stat-grid" aria-label="Метрики">
+            <div>
+              <span id="stickerCount">0</span>
+              <small>стикеров</small>
+            </div>
+            <div>
+              <span id="candidateCount">0</span>
+              <small>кандидатов</small>
+            </div>
+            <div>
+              <span id="normalizedWord">afetz</span>
+              <small>поиск</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="workbench">
+          <div class="workbench-head">
+            <div>
+              <p class="eyebrow">лучший найденный крафт</p>
+              <h2 id="craftTitle">AFETZ calibrated</h2>
+            </div>
+            <div class="score-pill" id="scorePill">0%</div>
+          </div>
+
+          <div class="weapon-rail" id="previewRail"></div>
+          <div class="craft-notes" id="craftNotes"></div>
+          <div class="craft-actions">
+            <button type="button" id="sharePreset" class="primary-action">Поделиться ссылкой</button>
+            <button type="button" data-jump="#revenuePanel" class="primary-action">Заказать ручной подбор</button>
+            <button type="button" id="copyPreset" class="secondary-action">Скопировать пресет</button>
+            <button type="button" id="savePreset" class="quiet-action">Сохранить</button>
+            <button type="button" id="loadPreset" class="quiet-action">Загрузить</button>
+            <button type="button" id="resetCraft" class="quiet-action danger-action">Сбросить</button>
+          </div>
+          <textarea id="exportBox" class="export-box" aria-label="Экспорт крафта" readonly spellcheck="false" hidden></textarea>
+        </section>
+
+        <section class="results-surface">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">варианты</p>
+              <h2>Комбинации</h2>
+            </div>
+            <span id="resultCount">0</span>
+          </div>
+          <div class="results-list" id="resultsList"></div>
+        </section>
+
+        <section class="candidates-surface">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">буквы и фрагменты</p>
+              <h2>Лучшие замены</h2>
+            </div>
+          </div>
+          <div class="candidate-columns" id="candidateColumns"></div>
+        </section>
+
+        <section class="vision-surface">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">визуальная проверка</p>
+              <h2>Читаемость стикеров</h2>
+            </div>
+            <span id="visionStatus">ожидание</span>
+          </div>
+          <div class="vision-grid" id="visionPanel"></div>
+        </section>
+
+        <section class="money-surface">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">цена стикеров и риски</p>
+              <h2>Оценка перед покупкой</h2>
+            </div>
+            <span id="moneyStatus">ожидание</span>
+          </div>
+          <div class="money-panel" id="moneyPanel"></div>
+        </section>
+
+        <section class="revenue-surface">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">ручной подбор</p>
+              <h2>Заказать подбор</h2>
+            </div>
+            <span id="revenueStatus">загружаю</span>
+          </div>
+          <div class="revenue-panel" id="revenuePanel"></div>
+        </section>
+
+        <section class="operator-surface" id="operatorSurface" hidden>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">owner cockpit</p>
+              <h2>EBITDA Desk</h2>
+            </div>
+            <span id="operatorStatus">locked</span>
+          </div>
+          <div class="operator-panel" id="operatorPanel"></div>
+        </section>
+
+        <section class="browser-surface">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">полная база</p>
+              <h2>Стикеры</h2>
+            </div>
+            <label class="sr-only" for="stickerSearch">Поиск стикера</label>
+            <input id="stickerSearch" placeholder="Apeks, zont1x, Paris..." spellcheck="false" />
+          </div>
+          <div class="sticker-grid" id="stickerGrid"></div>
+        </section>
+
+        <section class="research-surface" hidden>
+          <details>
+            <summary>План продукта и ресерч</summary>
+            <ol>
+              <li>Live-база стикеров: ByMykel CSGO-API, сейчас загружается полный `stickers.json`.</li>
+              <li>Сегментация слова: динамический поиск по кускам названий и автографов, до 4 символов на стикер.</li>
+              <li>Калибровка: ручные рецепты для проверенных крафтов, первым добавлен `afetz` со scrape из скриншота.</li>
+              <li>Computer Vision: canvas-анализ PNG через CORS-safe image proxy, метрики плотности, bbox, контраста и симметрии.</li>
+              <li>Продакшен: кеш базы, Steam Market links, сохранение пресетов, экспорт порядка нанесения.</li>
+              <li>Backend: серверный кеш базы, Steam-цены, PNG-анализ без CORS-прокси и короткие ссылки на пресеты.</li>
+            </ol>
+          </details>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

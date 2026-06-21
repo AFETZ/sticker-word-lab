@@ -1,0 +1,69 @@
+{
+  "owner": "AFETZ",
+  "currency": "USD",
+  "contact_url": "",
+  "community_url": "",
+  "trade_url": "",
+  "donation_url": "",
+  "affiliate_disclosure": "Цена пакета — стоимость услуги по подбору. Стикеры покупаются отдельно по актуальным ценам Steam. Расчёты ориентировочные и не гарантируют прибыль. Контакт нужен только для ответа по заявке.",
+  "economics": {
+    "lead_to_paid_rate": 0.12,
+    "payment_fee_rate": 0.039,
+    "refund_rate": 0.03,
+    "monthly_fixed_cost": 30,
+    "support_cost_per_paid": 1.25,
+    "affiliate_value_per_click": 0.08
+  },
+  "plans": [
+    {
+      "id": "pro",
+      "name": "Быстрый разбор",
+      "price": "$9",
+      "amount": 9,
+      "interval": "за услугу",
+      "tagline": "Готовый порядок стикеров, scrape, найденные Steam-цены и список замен под один ник.",
+      "features": ["Порядок нанесения", "Scrape и риски", "Steam-цены и замены"],
+      "payment_url": "",
+      "stripe_price_id": "",
+      "unit_cogs": 0.6
+    },
+    {
+      "id": "audit",
+      "name": "Ручной аудит ника",
+      "price": "$19",
+      "amount": 19,
+      "interval": "за услугу",
+      "tagline": "Ручная проверка ника с несколькими бюджетами и понятным списком покупок.",
+      "features": ["3 бюджета", "Проверка читаемости", "Список покупок"],
+      "payment_url": "",
+      "stripe_price_id": "",
+      "unit_cogs": 4.5
+    },
+    {
+      "id": "creator",
+      "name": "Пак для автора",
+      "price": "$49",
+      "amount": 49,
+      "interval": "за услугу",
+      "tagline": "Подборка из 10 крафтов для контента с share-ссылками и покупочным списком.",
+      "features": ["10 крафтов", "Share-ссылки", "Buy-list"],
+      "payment_url": "",
+      "stripe_price_id": "",
+      "unit_cogs": 12
+    }
+  ],
+  "affiliate_links": [
+    {
+      "id": "inspect",
+      "label": "Inspect craft",
+      "url": "",
+      "expected_value_per_click": 0.05
+    },
+    {
+      "id": "market",
+      "label": "Buy stickers",
+      "url": "",
+      "expected_value_per_click": 0.08
+    }
+  ]
+}

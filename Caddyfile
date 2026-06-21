@@ -1,0 +1,4 @@
+{$DOMAIN} {
+  encode zstd gzip
+  reverse_proxy sticker-word-lab:8000
+}

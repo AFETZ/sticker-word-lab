@@ -1,0 +1,9 @@
+output/
+.codex-remote-attachments/
+backend/data/
+backend/monetization.local.json
+__pycache__/
+.env
+.env.*
+!.env.example
+backups/

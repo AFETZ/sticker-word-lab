@@ -1,0 +1,29 @@
+services:
+  sticker-word-lab:
+    networks:
+      - default
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.services.sticker-word-lab.loadbalancer.server.port=8000"
+      - "traefik.http.routers.sticker-word-lab.rule=Host(`${SWL_TRAEFIK_HOST}`)"
+      - "traefik.http.routers.sticker-word-lab.entrypoints=websecure"
+      - "traefik.http.routers.sticker-word-lab.tls=true"
+      - "traefik.http.routers.sticker-word-lab.tls.certresolver=le"
+      - "traefik.http.routers.sticker-word-lab.middlewares=sticker-word-lab-security"
+      - "traefik.http.routers.sticker-word-lab-http.rule=Host(`${SWL_TRAEFIK_HOST}`)"
+      - "traefik.http.routers.sticker-word-lab-http.entrypoints=web"
+      - "traefik.http.routers.sticker-word-lab-http.middlewares=sticker-word-lab-https-redirect"
+      - "traefik.http.middlewares.sticker-word-lab-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.sticker-word-lab-https-redirect.redirectscheme.permanent=true"
+      - "traefik.http.middlewares.sticker-word-lab-security.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.sticker-word-lab-security.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.sticker-word-lab-security.headers.forceSTSHeader=true"
+      - "traefik.http.middlewares.sticker-word-lab-security.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.sticker-word-lab-security.headers.referrerPolicy=strict-origin-when-cross-origin"
+
+networks:
+  proxy:
+    external: true
+    name: proxy

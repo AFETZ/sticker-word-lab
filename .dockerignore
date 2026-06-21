@@ -1,0 +1,10 @@
+.git
+.codex-remote-attachments
+.env
+.env.*
+backend/data
+backend/monetization.local.json
+__pycache__
+*.pyc
+output
+backups
