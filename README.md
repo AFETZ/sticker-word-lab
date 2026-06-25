@@ -1,5 +1,17 @@
 # Sticker Word Lab
 
+<p align="center">
+  <img src="docs/assets/cover.svg" alt="Sticker Word Lab cover" width="100%">
+</p>
+
+![Portfolio](https://img.shields.io/badge/portfolio-web_app-2f6f6d?style=flat-square)
+![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-f7df1e?style=flat-square)
+![Python](https://img.shields.io/badge/Python-backend-3b6ea8?style=flat-square)
+![Docker](https://img.shields.io/badge/deploy-Docker-2496ed?style=flat-square)
+![CS2](https://img.shields.io/badge/domain-CS2_stickers-7a5c2e?style=flat-square)
+
+Веб-прототип для подбора CS2-стикеров под слово или ник: генератор крафтов, Steam price proxy, CV-оценка читаемости, пресеты, короткие ссылки и money/revenue cockpit.
+
 ## Деплой на сервер
 
 Docker/VPS инструкция: [`docs/deploy-vps.md`](docs/deploy-vps.md).
@@ -8,7 +20,7 @@ Docker/VPS инструкция: [`docs/deploy-vps.md`](docs/deploy-vps.md).
 DOMAIN=craft.example.com bash scripts/deploy.sh
 ```
 
-Веб-прототип для подбора CS2-стикеров под слово или ник. Тестовый кейс по умолчанию: `afetz`.
+Тестовый кейс по умолчанию: `afetz`.
 
 ## Что сделано
 

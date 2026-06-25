@@ -1,0 +1,31 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Sticker Word Lab cover</title>
+  <desc id="desc">CS2 sticker word craft generator cover with letter tiles and pricing signals.</desc>
+  <rect width="1200" height="360" rx="24" fill="#111827"/>
+  <rect x="46" y="46" width="1108" height="268" rx="20" fill="#182236" stroke="#2d3b57" stroke-width="2"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="84" y="112" fill="#ffffff" font-size="46" font-weight="700">Sticker Word Lab</text>
+    <text x="86" y="152" fill="#b7c3d9" font-size="22">CS2 sticker words, Steam prices, CV scoring, presets and Docker deploy</text>
+  </g>
+  <g transform="translate(86 205)" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="800">
+    <rect width="96" height="74" rx="16" fill="#2f6f6d"/>
+    <text x="34" y="50" fill="#ffffff">A</text>
+    <rect x="112" width="96" height="74" rx="16" fill="#3b6ea8"/>
+    <text x="146" y="50" fill="#ffffff">F</text>
+    <rect x="224" width="96" height="74" rx="16" fill="#7a5c2e"/>
+    <text x="250" y="50" fill="#ffffff">ET</text>
+    <rect x="336" width="96" height="74" rx="16" fill="#44546a"/>
+    <text x="370" y="50" fill="#ffffff">Z</text>
+  </g>
+  <g transform="translate(620 202)" font-family="Segoe UI, Arial, sans-serif">
+    <rect width="178" height="34" rx="17" fill="#25334d"/>
+    <text x="22" y="23" fill="#dbeafe" font-size="16" font-weight="700">readability 91</text>
+    <rect x="0" y="48" width="178" height="34" rx="17" fill="#25334d"/>
+    <text x="22" y="71" fill="#dbeafe" font-size="16" font-weight="700">liquidity 74</text>
+    <rect x="0" y="96" width="178" height="34" rx="17" fill="#25334d"/>
+    <text x="22" y="119" fill="#dbeafe" font-size="16" font-weight="700">price proxy</text>
+  </g>
+  <path d="M900 252c54-86 126-122 214-108" stroke="#f6d365" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="900" cy="252" r="10" fill="#f6d365"/>
+  <circle cx="1114" cy="144" r="10" fill="#f6d365"/>
+</svg>
